@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy Murillo - Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accent-purple': '#7C3AED', 
+                        'accent-cyan': '#38bdf8',   
+                        'accent-green': '#22c55e',
+                        'dark-bg': '#000000',       
+                        'card-gray': '#1c1c1c',
+                        'btn-blue': '#93c5fd', /* Light Blue for Buttons */
+                        'btn-purple': '#d8b4fe', /* Light Purple for Buttons */
+                    },
+                    fontFamily: {
+                        sans: ['Arial', 'Helvetica', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body { background-color: #000; color: white; overflow-x: hidden; }
+        
+        /* Page Loader */
+        #loader {
+            position: fixed; inset: 0; background: #000; z-index: 9999;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .spinner {
+            width: 50px; height: 50px; border: 4px solid #333;
+            border-top: 4px solid #7C3AED; border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* Contact Inputs */
+        .contact-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #4B5563;
+            color: white;
+            padding: 12px 0;
+            width: 100%;
+            font-weight: 600;
+            font-size: 1.1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .contact-input:focus {
+            border-bottom-color: #7C3AED;
+        }
+        .input-label {
+            color: #9CA3AF;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 4px;
+            display: block;
+        }
+
+        /* Floating Logo Circle Style */
+        .card-floating-logo {
+            position: absolute;
+            top: -30px;
+            right: -30px; /* Pulls it outside the box like the image */
+            width: 60px;
+            height: 60px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-width: 2px;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="antialiased font-sans">
+
+    <div id="loader"><div class="spinner"></div></div>
+
+    <nav class="fixed w-full z-50 bg-black/95 backdrop-blur border-b border-gray-900">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="w-32">
+                <a href="#home"><img src="images/logo.png" alt="Daisy Murillo" class="h-8 w-auto"></a>
+            </div>
+            
+            <div class="hidden md:flex space-x-10 text-sm font-bold tracking-wide text-gray-400">
+                <a href="#home" class="hover:text-white transition">Home</a>
+                <a href="#about" class="hover:text-white transition">About</a>
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#contacts" class="hover:text-white transition">Contacts</a>
+            </div>
+
+            <button id="menu-btn" class="md:hidden text-white">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden bg-gray-900 p-4 text-center border-t border-gray-800">
+            <a href="#home" class="block py-3 hover:text-accent-purple">Home</a>
+            <a href="#about" class="block py-3 hover:text-accent-purple">About</a>
+            <a href="#projects" class="block py-3 hover:text-accent-purple">Projects</a>
+            <a href="#contacts" class="block py-3 hover:text-accent-purple">Contacts</a>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-32 pb-20 px-6 max-w-7xl mx-auto min-h-screen flex flex-col md:flex-row items-center justify-between">
+        
+        <div class="w-full md:w-1/2 z-10 space-y-8">
+            <div class="flex items-center gap-4">
+                <div class="h-1 w-16 bg-accent-purple"></div> 
+                <span class=" text-2xl font-bold">I am</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl font-bold leading-none tracking-tight">
+                Daisy <br> 
+                <span class="flex items-center gap-4 text-accent-purple ">
+                    Murillo <img src="images/arrow-p.png" class="w-10 h-10 " alt="Arrow">
+                </span>
+            </h1>
+
+            <p class="text-gray-400 text-lg max-w-lg leading-relaxed">
+                I am a computer science student and I work as an 
+                <span class="text-white font-bold">Infrastructure engineer</span>.
+                I'm passionate about technology especially about software industry.
+            </p>
+
+            <!-- <a href="#contacts" class="inline-block px-10 py-4 border-2 border-accent-purple text-accent-purple rounded-full hover:bg-accent-purple hover:text-white transition duration-300 font-bold uppercase tracking-wider text-sm">
+                Contact Me
+            </a> -->
+        </div>
+
+        <div class="w-full md:w-1/2 relative mt-16 md:mt-0 flex justify-center md:justify-end md:pr-12">
+            <img src="images/img.png" class="relative z-10 w-full max-w-[450px] object-contain" alt="Daisy Murillo" loading="lazy">
+        </div>
+    </section>
+
+    <section id="about" class="relative py-24 bg-black border-t border-gray-900 overflow-hidden">
+        <img src="images/About-Me.png" class="absolute left-0 top-0 w-32  opacity-100 z-0 h-full object-cover object-left" alt="">
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 pl-12 md:pl-32">
+            
+            <div class="flex flex-col md:flex-row gap-16 mb-16">
+                <div class="w-full md:w-1/3">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-1 w-12 bg-blue-500"></div>
+                        <span class="text-xl text-white">Something</span>
+                    </div>
+                    <h2 class="text-6xl md:text-7xl font-bold leading-tight">
+                        About <br>
+                        <span class="text-blue-500 flex items-center gap-4">
+                            Me <img src="images/arrow-b.png" class="w-12 h-12" alt="Arrow">
+                        </span>
+                    </h2>
+                    <p class="text-gray-400 mt-6 leading-relaxed">
+                        I am a computer science student and I work as an Infrastructure engineer. I'm passionate about technology especially about software industry.
+                    </p>
+                </div>
+
+                <div class="w-full md:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-card-gray p-8 flex flex-col justify-center h-48">
+                        <h3 class="text-5xl font-bold text-accent-purple mb-2">3+</h3>
+                        <p class="text-white font-medium">Years of Experience</p>
+                    </div>
+                    <div class="bg-card-gray p-8 flex flex-col justify-center h-48">
+                        <h3 class="text-5xl font-bold text-accent-cyan mb-2">230+</h3>
+                        <p class="text-white font-medium">Projects Completed</p>
+                    </div>
+                    <div class="bg-card-gray p-8 flex flex-col justify-center h-48">
+                        <h3 class="text-5xl font-bold text-accent-purple mb-2">7</h3>
+                        <p class="text-white font-medium">Particular Skills</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="h-px w-full bg-gradient-to-r from-accent-purple to-transparent mb-16 opacity-50"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div>
+                    <img src="images/Coding-Enthusiasist.png" class="w-12 h-12 mb-6 object-contain" alt="Code">
+                    <h3 class="text-xl font-bold mb-3">Coding Enthusiast</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                    </p>
+                </div>
+                <div>
+                    <img src="images/Infrastructure-Expert.png" class="w-12 h-12 mb-6 object-contain" alt="Infra">
+                    <h3 class="text-xl font-bold mb-3">Infrastructure Expert</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                    </p>
+                </div>
+                <div>
+                    <img src="images/web-Master.png" class="w-12 h-12 mb-6 object-contain" alt="Web">
+                    <h3 class="text-xl font-bold mb-3">Web Master</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">
+                        There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="relative py-24 bg-black overflow-hidden">
+        <img src="images/Projects.png" class="absolute right-0 top-0 w-32 md:w-48 opacity-100 z-0 h-full object-cover object-right" alt="">
+
+        <div class="relative z-10 max-w-7xl mx-auto px-6 md:pr-32">
+            
+            <div class="flex flex-col md:flex-row gap-12 mb-16">
+                <div class="w-full md:w-1/3">
+                    <div class="flex items-center gap-4 mb-2">
+                        <div class="h-0.5 w-12 bg-accent-cyan"></div>
+                        <span class="text-xl text-white">My completed</span>
+                    </div>
+                    <h2 class="text-6xl font-bold text-white flex items-center gap-4">
+                        Projects <img src="images/arrow-b.png" class="w-10 h-10" alt="Arrow">
+                    </h2>
+                    <p class="text-gray-400 mt-6 leading-relaxed">
+                        I am a computer science student and I work as an Infrastructure engineer. I'm passionate about technology especially about software industry.
+                    </p>
+                </div>
+
+                <div class="w-full md:w-2/3">
+                    <div class="owl-carousel owl-theme">
+                        
+                        <div class="item pt-10 pr-10"> 
+                            <div class="relative border-2 border-accent-purple rounded-3xl p-6 bg-black h-full">
+                                <div class="card-floating-logo border-accent-purple">
+                                    <img src="images/Tesla.png" class="w-6 h-auto" alt="Tesla">
+                                </div>
+                                
+                                <div class="h-48 overflow-hidden rounded-xl mb-6 bg-gray-900">
+                                    <img src="images/1.png" class="w-full h-full object-cover" loading="lazy">
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Tesla</h3>
+                                <p class="text-gray-500 text-sm mb-6">Something about the project should be written here in the contrary.</p>
+                                <div class="flex gap-4">
+                                    <span class="bg-btn-blue text-black font-bold px-4 py-2 rounded text-xs">IOS APP</span>
+                                    <span class="bg-btn-purple text-black font-bold px-4 py-2 rounded text-xs">ANDROID</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item pt-10 pr-10">
+                            <div class="relative border-2 border-accent-cyan rounded-3xl p-6 bg-black h-full">
+                                <div class="card-floating-logo border-accent-cyan">
+                                    <img src="images/Slack.png" class="w-8 h-auto" alt="Slack">
+                                </div>
+
+                                <div class="h-48 overflow-hidden rounded-xl mb-6 bg-gray-900">
+                                    <img src="images/4.png" class="w-full h-full object-cover" loading="lazy">
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Slack</h3>
+                                <p class="text-gray-500 text-sm mb-6">Something about the project should be written here in the contrary.</p>
+                                <div class="flex gap-4">
+                                    <span class="bg-btn-blue text-black font-bold px-4 py-2 rounded text-xs">IOS APP</span>
+                                    <span class="bg-btn-purple text-black font-bold px-4 py-2 rounded text-xs">ANDROID</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item pt-10 pr-10">
+                            <div class="relative border-2 border-accent-cyan rounded-3xl p-6 bg-black h-full">
+                                <div class="card-floating-logo border-accent-cyan">
+                                    <img src="images/twitter.png" class="w-8 h-auto" alt="Twitter">
+                                </div>
+
+                                <div class="h-48 overflow-hidden rounded-xl mb-6 bg-gray-900">
+                                    <img src="images/2.png" class="w-full h-full object-cover" loading="lazy">
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Twitter</h3>
+                                <p class="text-gray-500 text-sm mb-6">Something about the project should be written here in the contrary.</p>
+                                <div class="flex gap-4">
+                                    <span class="bg-btn-blue text-black font-bold px-4 py-2 rounded text-xs">IOS APP</span>
+                                    <span class="bg-btn-purple text-black font-bold px-4 py-2 rounded text-xs uppercase">Infrastructure</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item pt-10 pr-10">
+                            <div class="relative border-2 border-accent-green rounded-3xl p-6 bg-black h-full">
+                                <div class="card-floating-logo border-accent-green">
+                                    <img src="images/Grab.png" class="w-12 h-auto" alt="Grab">
+                                </div>
+
+                                <div class="h-48 overflow-hidden rounded-xl mb-6 bg-gray-900">
+                                    <img src="images/3.png" class="w-full h-full object-cover" loading="lazy">
+                                </div>
+                                <h3 class="text-2xl font-bold mb-2">Grab</h3>
+                                <p class="text-gray-500 text-sm mb-6">Something about the project should be written here in the contrary.</p>
+                                <div class="flex gap-4">
+                                    <span class="bg-btn-blue text-black font-bold px-4 py-2 rounded text-xs">APP</span>
+                                    <span class="bg-btn-purple text-black font-bold px-4 py-2 rounded text-xs">ANDROID</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="relative py-24 max-w-7xl mx-auto px-6 overflow-hidden ">
+        <img src="images/Contacts.png" class="absolute left-0 top-20 w-32  opacity-100 z-0" alt="">
+        
+        <div class="relative z-10 md:pl-24 top-20">
+            <h2 class="text-4xl font-bold mb-16 flex items-center gap-10 ">
+                <!-- <div class="h-px flex-1 bg-gray-800"></div> -->
+                Contacts <img src="images/arrow-b.png" class="w-10 h-10" alt="Arrow">
+            
+                                        <div class="pt-4">
+                            <div class="flex gap-6">
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-sky-500 transition text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-700 transition text-white">
+                                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+            
+            </h2>
+            
+            <form action="#" class="">
+                <div class=" md:flex-row gap-20 ">
+                    
+                    <div class="w-screen md:w-1/3 space-y-10">
+                    <section class="flex gap-6 justify-allignment items-center  ">
+                        
+                        <div>
+                            <label class="input-label">First Name</label>
+                            <input type="text" class="contact-input" placeholder="Buenos">
+                        </div>
+                        <div>
+                            <label class="input-label">Last Name</label>
+                            <input type="text" class="contact-input" placeholder="Almiron">
+                        </div>
+                    </section>
+
+                    <section class="flex gap-6">
+
+                        <div>
+                            <label class="input-label">Mail</label>
+                            <input type="email" class="contact-input text-accent-cyan" placeholder="buenosalmiron@hotmail.com">
+                        </div>
+                        <div>
+                            <label class="input-label">Phone</label>
+                            <input type="tel" class="contact-input" placeholder="+44 827 7736">
+                        </div>
+                    </section>
+
+
+                    </div>
+                    
+                    <div class="w-full md:w-2/3 flex flex-col justify-between  >
+                        <div>
+
+                            <label class="input-label mb-4 block ">Message</label>
+                            <textarea class="w-full bg-transparent border-b-2 border-gray-700 py-4 text-xl text-white focus:border-accent-purple outline-none transition resize-none h-48" placeholder="Write your message"></textarea>
+                        </div>
+                        
+                        <div class="mt-8 w-screen">
+                            <button type="submit" class="bg-blue-500 text-white font-bold py-4 px-16 rounded shadow-lg shadow-purple-900/40 hover:bg-purple-600 transition duration-300 w-full md:w-auto uppercase tracking-wider text-sm">
+                                Submit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            
+            <div class="mt-24 pt-8 border-t border-gray-900 text-center text-gray-600 text-sm">
+                Copyright 2021 Daisy Murillo. All rights reserved.
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+    <script>
+        $(window).on('load', function() { $('#loader').fadeOut(800); });
+        $(document).ready(function(){
+            $(".owl-carousel").owlCarousel({
+                loop: true, margin: 24, nav: false, dots: true,
+                responsive: { 0: { items: 1 }, 768: { items: 2 }, 1024: { items: 2 } }
+            });
+            $('#menu-btn').click(function(){ $('#mobile-menu').slideToggle(); });
+        });
+    </script>
+</body>
+</html>
